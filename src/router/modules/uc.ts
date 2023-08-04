@@ -3,7 +3,7 @@ export default {
   redirect: '/uc/user',
   meta: {
     icon: 'network',
-    title: '系统管理',
+    title: '用户',
     // showLink: false,
     rank: 10
   },

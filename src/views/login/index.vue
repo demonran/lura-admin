@@ -44,14 +44,12 @@ const onLogin = async (formEl: FormInstance | undefined) => {
     if (valid) {
       useUserStoreHook()
         .loginByUsername({ username: ruleForm.username, password: 'admin123' })
-        .then(res => {
-          if (res.success) {
-            // 获取后端路由
-            initRouter().then(() => {
-              router.push(getTopMenu(true).path)
-              message('登录成功', { type: 'success' })
-            })
-          }
+        .then(() => {
+          // 获取后端路由
+          initRouter().then(() => {
+            router.push(getTopMenu(true).path)
+            message('登录成功', { type: 'success' })
+          })
         })
     } else {
       loading.value = false

@@ -1,6 +1,6 @@
 export default {
   path: '/uc',
-  redirect: '/uc/user',
+  redirect: '/uc/user-management',
   meta: {
     icon: 'network',
     title: '用户',

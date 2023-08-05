@@ -1,6 +1,6 @@
 export default {
   path: '/gateway',
-  redirect: '/gateway/log',
+  redirect: '/gateway/logs',
   meta: {
     icon: 'network',
     title: '网关',

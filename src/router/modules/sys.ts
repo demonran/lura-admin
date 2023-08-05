@@ -10,7 +10,7 @@ export default {
   children: [
     {
       path: '/sys/logs',
-      name: 'logs',
+      name: 'sysLog',
       component: () => import('@/views/sys/logs.vue'),
       meta: {
         title: '操作日志'

@@ -13,9 +13,10 @@
           </el-form>
         </template>
       </el-table-column>
+      <el-table-column prop="module" label="模块" />
       <el-table-column prop="username" label="用户名" />
       <el-table-column prop="requestIp" label="IP" />
-      <el-table-column :show-overflow-tooltip="true" prop="address" label="IP来源" />
+      <el-table-column width="190px" prop="address" label="IP来源" />
       <el-table-column prop="description" label="描述" />
       <el-table-column prop="browser" label="浏览器" />
       <el-table-column prop="time" label="请求耗时" align="center">
@@ -26,7 +27,6 @@
         </template>
       </el-table-column>
       <el-table-column prop="createTime" label="创建日期" width="180px" />
-
     </el-table>
     <div class="flex justify-end p-4 mt-1 border-t-1">
       <el-pagination

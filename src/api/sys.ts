@@ -1,4 +1,5 @@
 import { http } from '@/utils/http'
+import Qs from 'qs'
 
 export type SysLog = {
   id: number
@@ -24,6 +25,9 @@ export type SysLogRes = {
 
 export const getSysLogs = (params: { page: number; size: number }) => {
   return http.request<SysLogRes>('get', '/api/sys/api/logs', {
-    params
+    params,
+    paramsSerializer: function(params) {
+      return Qs.stringify(params, { arrayFormat: 'repeat' })
+    }
   })
 }

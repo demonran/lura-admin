@@ -54,7 +54,8 @@ const tableConfig = reactive({
   data: [],
   page: 1,
   size: 20,
-  total: 0
+  total: 0,
+  sort: ['id,desc']
 })
 
 const handleChangePage = (key, value) => {
@@ -64,7 +65,7 @@ const handleChangePage = (key, value) => {
 
 const getTableData = async (params?) => {
   if (!params) {
-    params = { page: tableConfig.page - 1, size: tableConfig.size }
+    params = { page: tableConfig.page - 1, size: tableConfig.size, sort: tableConfig.sort }
   }
   const res: SysLogRes = await getSysLogs(params)
   console.log(res)

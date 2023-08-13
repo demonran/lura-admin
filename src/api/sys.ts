@@ -3,18 +3,29 @@ import Qs from 'qs'
 
 export type SysLog = {
   id: number
-  targetServer: string
-  requestPath: string
-  requestMethod: string
-  url: string
-  requestBody: string
-  responseData: string
-  ip: string
-  requestTime: string
-  responseTime: string
-  executeTime: number
+  module: string
+  username: string
+  description: string
+  method: string
+  params: string
+  logType: string
+  requestIp: string
   address: string
-  responseSize: number
+  browser: string
+  time: number
+  exceptionDetail: string
+  createTime: Date
+}
+
+
+export type OnlineUser = {
+  id: number
+  userName: string
+  nickName: string
+  browser: string
+  ip: string
+  address: string
+  loginTime: Date
 }
 
 export type SysLogRes = {
@@ -31,3 +42,13 @@ export const getSysLogs = (params: { page: number; size: number }) => {
     }
   })
 }
+
+export const getOnlineUsers = (params: { page: number; size: number }) => {
+  return http.request<OnlineUser[]>('get', '/api/uc/auth/online', {
+    params,
+    paramsSerializer: function(params) {
+      return Qs.stringify(params, { arrayFormat: 'repeat' })
+    }
+  })
+}
+

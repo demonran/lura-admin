@@ -15,6 +15,14 @@ export default {
       meta: {
         title: '操作日志'
       }
+    },
+    {
+      path: '/sys/online',
+      name: 'online',
+      component: () => import('@/views/sys/online.vue'),
+      meta: {
+        title: '在线用户'
+      }
     }
   ]
 } as RouteConfigsTable

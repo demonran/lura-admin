@@ -17,16 +17,6 @@ spec:
                 name: $APP_NAME-svc
                 port:
                   number: $APP_PORT
-    - host: "xn--9kq653ed3qgqg.com"
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: $APP_NAME-svc
-                port:
-                  number: $APP_PORT
 
 ---
 apiVersion: apps/v1

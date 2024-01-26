@@ -15,9 +15,21 @@ pipeline {
             }
         }
 
-     stage('Deploy') {
+     stage('Deploy-sit') {
+       when {
+         branch 'master'
+       }
        steps {
          sh './deploy/ci deploy'
+       }
+     }
+
+     stage('Deploy-uat') {
+       when {
+         branch 'release'
+       }
+       steps {
+         sh './deploy/ci deploy uat'
        }
      }
    }

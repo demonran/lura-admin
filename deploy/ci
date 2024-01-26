@@ -13,7 +13,7 @@ upload() {
   password=$2
   ENV=${3:-sit}
    echo "${password}" |sudo docker login --username="${username}"  registry.cn-chengdu.aliyuncs.com --password-stdin
-   sudo docker build --build-arg env=$ENV -f deploy/Dockerfile -t ${DOCKER_IMAGE} .
+   sudo docker build  -f deploy/Dockerfile -t ${DOCKER_IMAGE} .
    sudo docker push ${DOCKER_IMAGE}
    sudo docker rmi ${DOCKER_IMAGE}
 }

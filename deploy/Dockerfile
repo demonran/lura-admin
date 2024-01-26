@@ -4,7 +4,7 @@ WORKDIR /app
 RUN npm config set registry https://registry.npmmirror.com
 
 RUN corepack enable
-RUN corepack prepare pnpm@7.32.1 --activate
+# RUN corepack prepare pnpm@7.32.1 --activate
 
 
 COPY .npmrc package.json pnpm-lock.yaml ./

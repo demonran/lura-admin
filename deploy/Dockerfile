@@ -3,13 +3,12 @@ FROM node:16-alpine as builder
 WORKDIR /app
 RUN npm config set registry https://registry.npmmirror.com
 
-#RUN corepack enable
+RUN corepack enable
 #RUN corepack prepare pnpm@7.32.1 --activate
 
 
 COPY .npmrc package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile --registry https://registry.npmmirror.com
-
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --registry https://registry.npmmirror.com
 COPY . .
 RUN pnpm build
 

@@ -1,7 +1,6 @@
 <template>
   <div class="p-4 bg-bg_color drop-shadow-lg rounded-lg">
     <el-table :data="tableConfig.data" stripe height="600">
-      <el-table-column type="selection" width="55" />
       <el-table-column prop="userName" label="用户名" />
       <el-table-column prop="nickName" label="用户昵称" />
       <el-table-column prop="dept" label="部门" />
@@ -27,7 +26,7 @@
 </template>
 
 <script lang="ts" setup>
-import {getOnlineUsers, getSysLogs, OnlineUser, SysLogRes} from '@/api/sys'
+import { getSysLogs, SysLogRes } from '@/api/sys'
 defineOptions({
   name: 'logs'
 })
@@ -36,8 +35,7 @@ const tableConfig = reactive({
   data: [],
   page: 1,
   size: 20,
-  total: 0,
-  sort: ['id,desc']
+  total: 0
 })
 
 const handleChangePage = (key, value) => {
@@ -47,15 +45,14 @@ const handleChangePage = (key, value) => {
 
 const getTableData = async (params?) => {
   if (!params) {
-    params = {
-      page: tableConfig.page - 1,
-      size: tableConfig.size,
-      sort: tableConfig.sort
-    }
+    params = { page: tableConfig.page - 1, size: tableConfig.size }
   }
-  const res: OnlineUser[] = await getOnlineUsers(params)
+  const res: SysLogRes = await getSysLogs(params)
   console.log(res)
-  tableConfig.data = res
+  if (res.totalElements) {
+    tableConfig.total = res.totalElements
+  }
+  tableConfig.data = res.content
 }
 
 getTableData()
